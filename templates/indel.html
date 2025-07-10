@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Factory Helmet Detector</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#0d1117;color:#c9d1d9;text-align:center}
+    input[type=file]{margin:20px}
+    img{margin:10px;max-width:45%}
+  </style>
+</head>
+<body>
+  <h1>Upload image(s) – YOLO-ONNX Helmet Detector</h1>
+
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="images" accept="image/*" multiple required>
+    <button type="submit">Detect</button>
+  </form>
+
+  {% if results %}
+  <h2>Results</h2>
+  {% for img, classes in results %}
+    <div>
+      <img src="data:image/jpeg;base64,{{ img }}" />
+      <p>
+        Detected:
+        {% if classes %}
+          {{ classes | join(', ') }}
+        {% else %}
+          <em>None</em>
+        {% endif %}
+      </p>
+    </div>
+  {% endfor %}
+{% endif %}
+
+</body>
+</html>

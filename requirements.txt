@@ -1,0 +1,6 @@
+ultralytics==8.2.4
+onnxruntime==1.19.0
+opencv-python
+flask
+pillow
+numpy
