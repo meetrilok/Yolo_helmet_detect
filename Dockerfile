@@ -26,4 +26,4 @@ ENV FLASK_APP=app.py \
     FLASK_ENV=production
 
 # entrypoint – use gunicorn for robustness (single worker ok for demo)
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "--workers", "2", "--threads", "4", "app:app"]
